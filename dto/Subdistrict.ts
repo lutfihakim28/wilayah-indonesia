@@ -1,15 +1,13 @@
 export class Subistrict {
-  public code!: number;
-  public full_code!: string;
+  public code!: string;
   public name!: string;
-  public district_code!: number;
+  public district_code!: string;
 
   constructor(data: string) {
-    const [fullCode, name] = data.split(',');
-    const [, , district_code, code] = fullCode.split('.')
-    this.code = Number(code);
-    this.full_code = fullCode;
+    const [code, name] = data.split(',');
+    const [provinceCode, cityCode, districtCode,] = code.split('.')
+    this.code = code;
     this.name = name;
-    this.district_code = Number(district_code)
+    this.district_code = `${provinceCode}.${cityCode}.${districtCode}`
   }
 }

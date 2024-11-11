@@ -1,15 +1,13 @@
 export class City {
-  public code!: number;
-  public full_code!: string;
+  public code!: string;
   public name!: string;
-  public province_code!: number;
+  public province_code!: string;
 
   constructor(data: string) {
-    const [fullCode, name] = data.split(',');
-    const [provinceCode, code] = fullCode.split('.')
-    this.code = Number(code);
-    this.full_code = fullCode;
+    const [code, name] = data.split(',');
+    const [provinceCode, ..._] = code.split('.')
+    this.code = code;
     this.name = name;
-    this.province_code = Number(provinceCode)
+    this.province_code = provinceCode
   }
 }

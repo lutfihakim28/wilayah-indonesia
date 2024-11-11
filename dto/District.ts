@@ -1,15 +1,13 @@
 export class District {
-  public code!: number;
-  public full_code!: string;
+  public code!: string;
   public name!: string;
-  public city_code!: number;
+  public city_code!: string;
 
   constructor(data: string) {
-    const [fullCode, name] = data.split(',');
-    const [, city_code, code] = fullCode.split('.')
-    this.code = Number(code);
-    this.full_code = fullCode;
+    const [code, name] = data.split(',');
+    const [provinceCode, cityCode,] = code.split('.')
+    this.code = code;
     this.name = name;
-    this.city_code = Number(city_code)
+    this.city_code = `${provinceCode}.${cityCode}`
   }
 }
